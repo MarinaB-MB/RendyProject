@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/choiceFragment"
+        android:name="com.deadely.rendy.ui.choice.ChoiceFragment"
+        android:label="fragment_choice"
+        tools:layout="@layout/fragment_choice">
+        <action
+            android:id="@+id/action_choiceFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_choiceFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.deadely.rendy.ui.signin.SignInFragment"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in">
+        <action
+            android:id="@+id/action_signInFragment_to_nav_auth_graph"
+            app:destination="@id/nav_auth_graph"
+            app:popUpTo="@id/choiceFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.deadely.rendy.ui.signup.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up">
+        <action
+            android:id="@+id/action_signUpFragment_to_nav_auth_graph"
+            app:destination="@id/nav_auth_graph"
+            app:popUpTo="@id/choiceFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <include app:graph="@navigation/nav_auth_graph" />
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.deadely.rendy.ui.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_choiceFragment"
+            app:destination="@id/choiceFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_nav_auth_graph"
+            app:destination="@id/nav_auth_graph"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <action
+        android:id="@+id/toExitDialog"
+        app:destination="@id/exitDialog" />
+    <action
+        android:id="@+id/toLogoutDialog"
+        app:destination="@id/logoutDialog" />
+    <action
+        android:id="@+id/toChoiceFragment"
+        app:destination="@id/choiceFragment"
+        app:popUpTo="@id/nav_auth_graph"
+        app:popUpToInclusive="true" />
+    <dialog
+        android:id="@+id/exitDialog"
+        android:name="com.deadely.rendy.ui.dialog.ExitDialog"
+        android:label="ExitDialog" />
+    <dialog
+        android:id="@+id/logoutDialog"
+        android:name="com.deadely.rendy.ui.dialog.LogoutDialog"
+        android:label="LogoutDialog" />
+</navigation>
